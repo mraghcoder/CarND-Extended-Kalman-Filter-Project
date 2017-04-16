@@ -61,10 +61,17 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   float c1 = pow((px*px + py*py),0.5);
   float c2 = px*vx + py*vy;
   h_x[0] = c1;
-  if(fabs(c1) < 0.0001 || fabs(px) < 0.0001){
+  if(fabs(c1) < 0.0001 ){
 		cout << "h(x') Calc - Error - Division by Zero" << endl;
     return;
+    //c1 = (c1 > 0 ? 0.0001 : -0.0001);
 	}
+  if(fabs(px) < 0.0001){
+    px = (px > 0 ? 0.0001 : -0.0001);
+		//cout << "h(x') Calc - Error - Division by Zero" << endl;
+    //return;
+	}
+
 
   h_x[1] = atan2(py,px);
   h_x[2] = c2/c1;
