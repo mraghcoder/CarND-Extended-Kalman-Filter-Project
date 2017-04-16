@@ -33,4 +33,4 @@ For sample-laser-radar-measurement-data-1.txt, the RMSE values are:
   0.505135
   0.528294
 
-![Alt text](build/EKF_visualization1.png?raw=true)
+![Alt text](EKF_visualization1.png?raw=true)
