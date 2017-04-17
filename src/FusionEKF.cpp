@@ -136,7 +136,11 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 			  dt3*noise_ax, 0, dt2*noise_ax, 0,
 			  0, dt3*noise_ax, 0, dt2*noise_ax;
 
-  ekf_.Predict();
+  if (dt > 0.001)
+  {
+    ekf_.Predict();
+  }
+
 
   /*****************************************************************************
    *  Update
